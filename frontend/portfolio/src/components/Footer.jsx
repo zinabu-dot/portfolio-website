@@ -53,8 +53,8 @@ const Footer = () => {
             fontSize: '0.875rem',
             color: 'var(--text-light)'
           }}>
-            <p>© 2024 Your Name. All rights reserved.</p>
-            <p>Built with React & Vite • Deployed on Vercel</p>
+            <p>© 2025 Zinabu Melese. All rights reserved.</p>
+            {/* <p>Built with React & Vite • Deployed on Vercel</p> */}
           </div>
         </div>
       </div>
