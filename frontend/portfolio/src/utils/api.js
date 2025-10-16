@@ -24,6 +24,7 @@ api.interceptors.request.use((config) => {
 // API endpoints
 export const blogAPI = {
   getAllPosts: () => api.get('/posts'),
+  getAdminPosts: () => api.get('/admin/posts'),
   getPost: (id) => api.get(`/posts/${id}`),
   createPost: (data) => api.post('/posts', data),
   updatePost: (id, data) => api.put(`/posts/${id}`, data),
@@ -50,6 +51,27 @@ export const contactAPI = {
     
     return response.json();
   },
+};
+
+export const userAPI = {
+  register: (userData) => api.post('/register', userData),
+  login: (credentials) => api.post('/user-login', credentials),
+};
+
+export const commentAPI = {
+  getComments: (postId) => api.get(`/posts/${postId}/comments`),
+  addComment: (postId, content) => {
+    // Use admin token if available, otherwise user token
+    const adminToken = localStorage.getItem('adminToken');
+    const userToken = localStorage.getItem('userToken');
+    const token = adminToken || userToken;
+    
+    return axios.post(`${API_BASE_URL}/api/posts/${postId}/comments`, 
+      { content }, 
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+  },
+  deleteComment: (commentId) => api.delete(`/comments/${commentId}`),
 };
 
 export { API_BASE_URL, FORMSPREE_ENDPOINT };

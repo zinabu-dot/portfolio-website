@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CalendarIcon as Calendar, ClockIcon as Clock, TagIcon as Tag, ArrowLeftIcon as ArrowLeft, ShareIcon as Share2, HeartIcon as Heart } from '@heroicons/react/24/outline';
-import Giscus from '@giscus/react';
-import SimpleComments from '../components/SimpleComments';
+// import Giscus from '@giscus/react';
+import ServerComments from '../components/ServerComments';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -269,24 +269,7 @@ const BlogPost = () => {
           }}>
             Comments
           </h3>
-          {import.meta.env.VITE_GISCUS_REPO ? (
-            <Giscus
-              id="comments"
-              repo={import.meta.env.VITE_GISCUS_REPO}
-              repoId={import.meta.env.VITE_GISCUS_REPO_ID}
-              category={import.meta.env.VITE_GISCUS_CATEGORY || 'General'}
-              categoryId={import.meta.env.VITE_GISCUS_CATEGORY_ID}
-              mapping="pathname"
-              reactionsEnabled="1"
-              emitMetadata="0"
-              inputPosition="top"
-              theme="preferred_color_scheme"
-              lang="en"
-              loading="lazy"
-            />
-          ) : (
-            <SimpleComments postId={post.id} />
-          )}
+          <ServerComments postId={post.id} />
         </div>
       </article>
     </div>

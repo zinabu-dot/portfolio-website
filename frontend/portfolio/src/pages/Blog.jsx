@@ -70,16 +70,16 @@ const Blog = () => {
             justifyContent: 'center'
           }}>
             <div style={{ position: 'relative', minWidth: '300px' }}>
-              <Search 
-                size={20} 
-                style={{ 
-                  position: 'absolute', 
-                  left: '1rem', 
-                  top: '50%', 
-                  transform: 'translateY(-50%)',
-                  color: 'var(--text-light)'
-                }} 
-              />
+              <span style={{ 
+                position: 'absolute', 
+                left: '1rem', 
+                top: '50%', 
+                transform: 'translateY(-50%)',
+                color: 'var(--text-light)',
+                fontSize: '1rem'
+              }}>
+                🔍
+              </span>
               <input
                 type="text"
                 placeholder="Search posts..."
@@ -87,7 +87,7 @@ const Blog = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{
                   width: '100%',
-                  padding: '0.75rem 1rem 0.75rem 3rem',
+                  padding: '0.75rem 1rem 0.75rem 2.5rem',
                   border: '1px solid var(--border)',
                   borderRadius: '0.5rem',
                   backgroundColor: 'var(--background)',

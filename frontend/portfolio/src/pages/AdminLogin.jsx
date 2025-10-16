@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LockClosedIcon as Lock, UserIcon as User } from '@heroicons/react/24/outline';
 import { authAPI } from '../utils/api';
@@ -11,6 +11,13 @@ const AdminLogin = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('adminToken');
+    if (token) {
+      navigate('/admin/dashboard');
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setCredentials({
@@ -48,15 +55,15 @@ const AdminLogin = () => {
           <div style={{
             backgroundColor: 'var(--primary)',
             color: 'white',
-            width: '60px',
-            height: '60px',
+            width: '48px',
+            height: '48px',
             borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             margin: '0 auto 1rem'
           }}>
-            <Lock size={24} />
+            🔒
           </div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.5rem' }}>
             Admin Login
@@ -76,16 +83,16 @@ const AdminLogin = () => {
               Username
             </label>
             <div style={{ position: 'relative' }}>
-              <User 
-                size={20} 
-                style={{ 
-                  position: 'absolute', 
-                  left: '0.75rem', 
-                  top: '50%', 
-                  transform: 'translateY(-50%)',
-                  color: 'var(--text-light)'
-                }} 
-              />
+              <span style={{ 
+                position: 'absolute', 
+                left: '0.75rem', 
+                top: '50%', 
+                transform: 'translateY(-50%)',
+                color: 'var(--text-light)',
+                fontSize: '1rem'
+              }}>
+                👤
+              </span>
               <input
                 type="text"
                 name="username"
@@ -94,7 +101,7 @@ const AdminLogin = () => {
                 required
                 style={{
                   width: '100%',
-                  padding: '0.75rem 0.75rem 0.75rem 2.75rem',
+                  padding: '0.75rem 0.75rem 0.75rem 2.5rem',
                   border: '1px solid var(--border)',
                   borderRadius: '0.5rem',
                   backgroundColor: 'var(--background)',
@@ -114,16 +121,16 @@ const AdminLogin = () => {
               Password
             </label>
             <div style={{ position: 'relative' }}>
-              <Lock 
-                size={20} 
-                style={{ 
-                  position: 'absolute', 
-                  left: '0.75rem', 
-                  top: '50%', 
-                  transform: 'translateY(-50%)',
-                  color: 'var(--text-light)'
-                }} 
-              />
+              <span style={{ 
+                position: 'absolute', 
+                left: '0.75rem', 
+                top: '50%', 
+                transform: 'translateY(-50%)',
+                color: 'var(--text-light)',
+                fontSize: '1rem'
+              }}>
+                🔒
+              </span>
               <input
                 type="password"
                 name="password"
@@ -132,7 +139,7 @@ const AdminLogin = () => {
                 required
                 style={{
                   width: '100%',
-                  padding: '0.75rem 0.75rem 0.75rem 2.75rem',
+                  padding: '0.75rem 0.75rem 0.75rem 2.5rem',
                   border: '1px solid var(--border)',
                   borderRadius: '0.5rem',
                   backgroundColor: 'var(--background)',

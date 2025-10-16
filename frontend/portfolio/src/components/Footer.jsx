@@ -7,10 +7,10 @@ const Twitter = () => <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/yourusername', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/zinabu-dot', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/zinabu-melese-1382486a/', label: 'LinkedIn' },
     { icon: Twitter, href: 'https://twitter.com/yourusername', label: 'Twitter' },
-    { icon: Mail, href: 'mailto:your.email@example.com', label: 'Email' }
+    { icon: Mail, href: 'zinabu.melese.dev@gmail.com', label: 'Email' }
   ];
 
   return (

@@ -26,7 +26,7 @@ const AdminDashboard = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await blogAPI.getAllPosts();
+      const response = await blogAPI.getAdminPosts();
       setPosts(response.data);
     } catch (error) {
       toast.error('Failed to fetch posts');
@@ -186,7 +186,7 @@ const AdminDashboard = () => {
                 value={formData.content}
                 onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                 required
-                rows={12}
+                rows={20}
                 style={{
                   width: '100%',
                   padding: '0.75rem',
@@ -194,9 +194,10 @@ const AdminDashboard = () => {
                   borderRadius: '0.5rem',
                   backgroundColor: 'var(--background)',
                   color: 'var(--text)',
-                  fontSize: '1rem',
+                  fontSize: '0.875rem',
                   fontFamily: 'monospace',
-                  resize: 'vertical'
+                  resize: 'vertical',
+                  minHeight: '400px'
                 }}
               />
             </div>
@@ -287,27 +288,35 @@ const AdminDashboard = () => {
                     onClick={() => handleEdit(post)}
                     style={{
                       background: 'none',
-                      border: '1px solid var(--border)',
+                      border: '1px solid var(--primary)',
                       borderRadius: '0.25rem',
-                      padding: '0.5rem',
+                      padding: '0.5rem 0.75rem',
                       cursor: 'pointer',
-                      color: 'var(--primary)'
+                      color: 'var(--primary)',
+                      fontSize: '0.75rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.25rem'
                     }}
                   >
-                    <Edit size={16} />
+                    ✏️ Edit
                   </button>
                   <button
                     onClick={() => handleDelete(post.id)}
                     style={{
                       background: 'none',
-                      border: '1px solid var(--border)',
+                      border: '1px solid #ef4444',
                       borderRadius: '0.25rem',
-                      padding: '0.5rem',
+                      padding: '0.5rem 0.75rem',
                       cursor: 'pointer',
-                      color: '#ef4444'
+                      color: '#ef4444',
+                      fontSize: '0.75rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.25rem'
                     }}
                   >
-                    <Trash2 size={16} />
+                    🗑️ Delete
                   </button>
                 </div>
               </div>

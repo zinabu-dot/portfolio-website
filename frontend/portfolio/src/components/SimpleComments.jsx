@@ -1,13 +1,24 @@
 import { useState, useEffect } from 'react';
-import { UserIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/outline';
+
 
 const SimpleComments = ({ postId }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({ name: '', comment: '' });
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(`comments-${postId}`);
     if (saved) setComments(JSON.parse(saved));
+    
+    // Check if user is admin
+    const token = localStorage.getItem('adminToken');
+    setIsAdmin(!!token);
+    
+    // Load saved username
+    const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) {
+      setNewComment(prev => ({ ...prev, name: savedUser }));
+    }
   }, [postId]);
 
   const handleSubmit = (e) => {
@@ -27,11 +38,26 @@ const SimpleComments = ({ postId }) => {
     setNewComment({ name: '', comment: '' });
   };
 
+  const handleDeleteComment = (commentId, commentName) => {
+    const currentUser = localStorage.getItem('currentUser') || '';
+    
+    // Allow deletion if user is admin or comment owner
+    if (isAdmin || currentUser === commentName) {
+      const updated = comments.filter(c => c.id !== commentId);
+      setComments(updated);
+      localStorage.setItem(`comments-${postId}`, JSON.stringify(updated));
+    }
+  };
+
+  const handleUserChange = (name) => {
+    localStorage.setItem('currentUser', name);
+    setNewComment({ ...newComment, name });
+  };
+
   return (
     <div>
-      <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-        <ChatBubbleLeftIcon className="w-5 h-5" />
-        Comments ({comments.length})
+      <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '1rem' }}>
+        💬 Comments ({comments.length})
       </h3>
 
       {comments.map(comment => (
@@ -41,12 +67,30 @@ const SimpleComments = ({ postId }) => {
           borderRadius: '0.5rem', 
           marginBottom: '1rem' 
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <UserIcon className="w-4 h-4" />
-            <strong>{comment.name}</strong>
-            <span style={{ color: 'var(--text-light)', fontSize: '0.875rem' }}>
-              {new Date(comment.date).toLocaleDateString()}
-            </span>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ width: '16px', height: '16px', backgroundColor: 'var(--primary)', borderRadius: '50%', flexShrink: 0 }}></div>
+              <strong style={{ fontSize: '0.875rem' }}>{comment.name}</strong>
+              <span style={{ color: 'var(--text-light)', fontSize: '0.75rem' }}>
+                {new Date(comment.date).toLocaleDateString()}
+              </span>
+            </div>
+            {(isAdmin || localStorage.getItem('currentUser') === comment.name) && (
+              <button
+                onClick={() => handleDeleteComment(comment.id, comment.name)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: '#ef4444',
+                  fontSize: '0.75rem',
+                  padding: '0.25rem'
+                }}
+                title="Delete comment"
+              >
+                🗑️
+              </button>
+            )}
           </div>
           <p style={{ color: 'var(--text-light)' }}>{comment.comment}</p>
         </div>
@@ -64,7 +108,7 @@ const SimpleComments = ({ postId }) => {
           type="text"
           placeholder="Your name"
           value={newComment.name}
-          onChange={(e) => setNewComment({...newComment, name: e.target.value})}
+          onChange={(e) => handleUserChange(e.target.value)}
           style={{
             padding: '0.75rem',
             border: '1px solid var(--border)',
@@ -87,8 +131,8 @@ const SimpleComments = ({ postId }) => {
             resize: 'vertical'
           }}
         />
-        <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
-          Post Comment
+        <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start', fontSize: '0.875rem', padding: '0.5rem 1rem' }}>
+          💬 Post Comment
         </button>
       </form>
     </div>
