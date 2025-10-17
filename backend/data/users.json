@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "username": "Etsub",
+    "email": "sirawetsub489@gmail.com",
+    "password": "123",
+    "createdAt": "2025-10-16T19:40:30.635Z"
+  },
+  {
+    "id": 2,
+    "username": "rtsub",
+    "email": "sirawetsub@ghsh.com",
+    "password": "1234",
+    "createdAt": "2025-10-16T19:47:18.799Z"
+  }
+]

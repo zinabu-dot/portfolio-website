@@ -1,0 +1,19 @@
+{
+  "1": [
+    {
+      "id": 1,
+      "content": "Hello Z, nice article!",
+      "author": "admin",
+      "date": "2025-10-16T20:03:08.215Z"
+    }
+  ],
+  "3": [
+    {
+      "id": 2,
+      "content": "Hello Z, nice blog!",
+      "author": "Etsub",
+      "userId": 1,
+      "date": "2025-10-16T20:05:58.334Z"
+    }
+  ]
+}
