@@ -27,24 +27,43 @@ const Navbar = () => {
             Portfolio
           </Link>
 
-          {/* Desktop Navigation */}
-          <div style={{ display: 'none', alignItems: 'center', gap: '2rem' }} className="desktop-nav">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {/* Desktop Navigation */}
+            {window.innerWidth >= 768 ? (
+              <>
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    style={{
+                      color: isActive(item.path) ? 'var(--primary)' : 'var(--text)',
+                      textDecoration: 'none',
+                      fontWeight: isActive(item.path) ? '600' : '400',
+                      transition: 'color 0.2s ease',
+                      marginRight: '1rem'
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </>
+            ) : (
+              /* Mobile Menu Button */
+              <button
+                onClick={() => setIsOpen(!isOpen)}
                 style={{
-                  color: isActive(item.path) ? 'var(--primary)' : 'var(--text)',
-                  textDecoration: 'none',
-                  fontWeight: isActive(item.path) ? '600' : '400',
-                  transition: 'color 0.2s ease'
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: 'var(--text)',
+                  fontSize: '1.5rem'
                 }}
-                onMouseEnter={(e) => e.target.style.color = 'var(--primary)'}
-                onMouseLeave={(e) => e.target.style.color = isActive(item.path) ? 'var(--primary)' : 'var(--text)'}
               >
-                {item.name}
-              </Link>
-            ))}
+                {isOpen ? '✕' : '☰'}
+              </button>
+            )}
+            
+            {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
               style={{
@@ -52,49 +71,17 @@ const Navbar = () => {
                 border: '1px solid var(--border)',
                 borderRadius: '0.5rem',
                 padding: '0.5rem',
-                cursor: 'pointer',
-                color: 'var(--text)',
-                display: 'flex',
-                alignItems: 'center'
-              }}
-            >
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="mobile-nav">
-            <button
-              onClick={toggleTheme}
-              style={{
-                background: 'none',
-                border: '1px solid var(--border)',
-                borderRadius: '0.5rem',
-                padding: '0.5rem',
-                cursor: 'pointer',
-                color: 'var(--text)',
-                display: 'flex',
-                alignItems: 'center'
-              }}
-            >
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-            </button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              style={{
-                background: 'none',
-                border: 'none',
                 cursor: 'pointer',
                 color: 'var(--text)'
               }}
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {theme === 'light' ? '🌙' : '☀️'}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
+        {isOpen && window.innerWidth < 768 && (
           <div style={{ 
             display: 'flex', 
             flexDirection: 'column', 
@@ -102,7 +89,7 @@ const Navbar = () => {
             paddingBottom: '1rem',
             borderTop: '1px solid var(--border)',
             paddingTop: '1rem'
-          }} className="mobile-menu">
+          }}>
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -121,25 +108,6 @@ const Navbar = () => {
           </div>
         )}
       </div>
-
-      <style jsx>{`
-        @media (min-width: 768px) {
-          .desktop-nav {
-            display: flex !important;
-          }
-          .mobile-nav {
-            display: none !important;
-          }
-        }
-        @media (max-width: 767px) {
-          .desktop-nav {
-            display: none !important;
-          }
-          .mobile-nav {
-            display: flex !important;
-          }
-        }
-      `}</style>
     </nav>
   );
 };
