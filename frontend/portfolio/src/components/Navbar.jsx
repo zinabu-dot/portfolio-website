@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Bars3Icon as Menu, XMarkIcon as X, SunIcon as Sun, MoonIcon as Moon } from '@heroicons/react/24/outline';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
@@ -19,6 +20,19 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setIsOpen(false); // Close mobile menu on desktop
+      }
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   return (
     <nav style={{ backgroundColor: 'var(--background)', borderBottom: '1px solid var(--border)' }}>
       <div className="container">
@@ -29,7 +43,7 @@ const Navbar = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             {/* Desktop Navigation */}
-            {window.innerWidth >= 768 ? (
+            {!isMobile && (
               <>
                 {navItems.map((item) => (
                   <Link
@@ -47,8 +61,10 @@ const Navbar = () => {
                   </Link>
                 ))}
               </>
-            ) : (
-              /* Mobile Menu Button */
+            )}
+            
+            {/* Mobile Menu Button */}
+            {isMobile && (
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 style={{
@@ -81,7 +97,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && window.innerWidth < 768 && (
+        {isOpen && isMobile && (
           <div style={{ 
             display: 'flex', 
             flexDirection: 'column', 
