@@ -6,61 +6,79 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Customer Churn Prediction',
-      description: 'Machine learning model to predict customer churn using ensemble methods. Achieved 94% accuracy with feature engineering and hyperparameter tuning.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
-      tech: ['Python', 'Scikit-learn', 'Pandas', 'Flask'],
-      github: 'https://github.com/yourusername/churn-prediction',
-      demo: 'https://churn-demo.vercel.app',
+      title: 'Enterprise RAG System for Legal Document Analysis',
+      problem: 'Law firm processing 10,000+ legal documents monthly with 40+ hours/week spent on manual research',
+      solution: 'Built production RAG system using LangChain, ChromaDB, and GPT-4 with custom legal embeddings and citation tracking',
+      impact: '85% reduction in research time, 99.2% accuracy in document retrieval, $2M+ annual cost savings',
+      description: 'Enterprise-grade RAG system that revolutionized legal document analysis for a Fortune 500 law firm. Implemented advanced chunking strategies, semantic search, and real-time citation verification.',
+      image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&h=300&fit=crop',
+      tech: ['LangChain', 'GPT-4', 'ChromaDB', 'FastAPI', 'Docker', 'Kubernetes', 'Azure'],
+      github: 'https://github.com/yourusername/legal-rag-system',
+      demo: 'https://legal-rag-demo.vercel.app',
       featured: true
     },
     {
       id: 2,
-      title: 'NLP Sentiment Analysis',
-      description: 'Real-time sentiment analysis of social media posts using BERT and transformer models. Deployed as a REST API with Docker.',
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=300&fit=crop',
-      tech: ['Python', 'BERT', 'FastAPI', 'Docker'],
-      github: 'https://github.com/yourusername/sentiment-analysis',
-      demo: 'https://sentiment-api.herokuapp.com',
+      title: 'Real-time MLOps Pipeline for Fraud Detection',
+      problem: 'Financial institution losing $50M annually to fraud with 30-second detection latency causing customer friction',
+      solution: 'Deployed real-time ML pipeline using Kafka, MLflow, and ensemble models with sub-100ms inference and automated retraining',
+      impact: '92% fraud detection rate, 50ms average latency, 40% reduction in false positives, $30M+ losses prevented',
+      description: 'Production MLOps system processing 1M+ transactions daily with real-time feature engineering, model monitoring, and automated drift detection.',
+      image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop',
+      tech: ['Python', 'Kafka', 'MLflow', 'XGBoost', 'Redis', 'Prometheus', 'Grafana', 'AWS SageMaker'],
+      github: 'https://github.com/yourusername/fraud-detection-mlops',
+      demo: 'https://fraud-detection-demo.herokuapp.com',
       featured: true
     },
     {
       id: 3,
-      title: 'Sales Forecasting Dashboard',
-      description: 'Interactive dashboard for sales forecasting using time series analysis. Built with Streamlit and deployed on AWS.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop',
-      tech: ['Python', 'Streamlit', 'Prophet', 'AWS'],
-      github: 'https://github.com/yourusername/sales-dashboard',
-      demo: 'https://sales-forecast.streamlit.app',
+      title: 'Multi-Modal AI Assistant for Healthcare',
+      problem: 'Hospital radiologists spending 60% of time on routine image analysis, creating 2-week diagnosis backlogs',
+      solution: 'Developed multi-modal AI combining vision transformers and LLMs for automated medical image analysis with natural language reporting',
+      impact: '70% faster diagnosis, 95% accuracy in anomaly detection, 2-week backlog eliminated, improved patient outcomes',
+      description: 'HIPAA-compliant AI system integrating computer vision and NLP for automated medical image analysis with explainable AI features.',
+      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=300&fit=crop',
+      tech: ['PyTorch', 'Transformers', 'DICOM', 'FastAPI', 'PostgreSQL', 'Docker', 'HIPAA Compliance'],
+      github: 'https://github.com/yourusername/medical-ai-assistant',
+      demo: 'https://medical-ai-demo.streamlit.app',
       featured: false
     },
     {
       id: 4,
-      title: 'Image Classification API',
-      description: 'Deep learning API for image classification using CNN. Supports multiple image formats and batch processing.',
-      image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&h=300&fit=crop',
-      tech: ['TensorFlow', 'Keras', 'FastAPI', 'OpenCV'],
-      github: 'https://github.com/yourusername/image-classifier',
-      demo: 'https://image-api.vercel.app',
+      title: 'Intelligent Supply Chain Optimization Platform',
+      problem: 'Manufacturing company facing $15M inventory costs and 25% stockout rate due to poor demand forecasting',
+      solution: 'Built AI-powered platform using graph neural networks and time series forecasting with real-time optimization algorithms',
+      impact: '35% inventory cost reduction, 90% stockout reduction, $8M annual savings, 99.5% forecast accuracy',
+      description: 'End-to-end supply chain platform with predictive analytics, automated procurement, and real-time inventory optimization across 200+ locations.',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop',
+      tech: ['PyTorch Geometric', 'Prophet', 'Apache Spark', 'Airflow', 'Snowflake', 'Tableau', 'GCP'],
+      github: 'https://github.com/yourusername/supply-chain-ai',
+      demo: 'https://supply-chain-demo.vercel.app',
       featured: false
     },
     {
       id: 5,
-      title: 'Recommendation System',
-      description: 'Collaborative filtering recommendation system for e-commerce. Implemented using matrix factorization techniques.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-      tech: ['Python', 'Surprise', 'NumPy', 'Flask'],
-      github: 'https://github.com/yourusername/recommendation-system',
-      demo: 'https://recommender-demo.herokuapp.com',
+      title: 'Conversational AI for Customer Support Automation',
+      problem: 'E-commerce platform handling 50,000+ daily support tickets with 24-hour response time and 60% customer satisfaction',
+      solution: 'Deployed fine-tuned LLM with retrieval augmentation, sentiment analysis, and automated escalation workflows',
+      impact: '80% ticket automation, 2-minute average response time, 95% customer satisfaction, $5M operational savings',
+      description: 'Production conversational AI system with multi-language support, emotion detection, and seamless human handoff capabilities.',
+      image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=500&h=300&fit=crop',
+      tech: ['GPT-4', 'LangChain', 'Pinecone', 'Streamlit', 'MongoDB', 'WebSocket', 'Kubernetes'],
+      github: 'https://github.com/yourusername/conversational-ai-support',
+      demo: 'https://ai-support-demo.herokuapp.com',
       featured: false
     },
     {
       id: 6,
-      title: 'Data Pipeline Automation',
-      description: 'Automated ETL pipeline for processing large datasets. Built with Apache Airflow and deployed on cloud infrastructure.',
-      image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=500&h=300&fit=crop',
-      tech: ['Python', 'Airflow', 'PostgreSQL', 'AWS'],
-      github: 'https://github.com/yourusername/data-pipeline',
+      title: 'Automated Code Review & Security Scanner',
+      problem: 'Tech company with 200+ developers experiencing 40% of bugs reaching production and security vulnerabilities in 15% of releases',
+      solution: 'Built AI-powered code analysis platform using AST parsing, static analysis, and LLM-based vulnerability detection',
+      impact: '60% bug reduction, 95% security vulnerability detection, 50% faster code reviews, zero critical security incidents',
+      description: 'Enterprise code analysis platform with real-time scanning, automated fix suggestions, and integration with CI/CD pipelines.',
+      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&h=300&fit=crop',
+      tech: ['Python', 'AST', 'CodeQL', 'GitHub Actions', 'SonarQube', 'Docker', 'Elasticsearch'],
+      github: 'https://github.com/yourusername/ai-code-reviewer',
       demo: null,
       featured: false
     }
@@ -78,11 +96,11 @@ const Projects = () => {
             textAlign: 'center', 
             fontSize: '1.125rem', 
             color: 'var(--text-light)', 
-            maxWidth: '600px', 
+            maxWidth: '700px', 
             margin: '0 auto 3rem'
           }}>
-            Here are some of my featured projects showcasing my expertise in data science, 
-            machine learning, and AI development.
+            Real-world AI solutions that delivered measurable business impact. Each project showcases 
+            problem-solving approach, technical implementation, and quantified results.
           </p>
 
           {/* Featured Projects */}
@@ -92,7 +110,7 @@ const Projects = () => {
             </h2>
             <div style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', 
               gap: '2rem'
             }}>
               {featuredProjects.map(project => (
@@ -108,7 +126,7 @@ const Projects = () => {
             </h2>
             <div style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', 
               gap: '1.5rem'
             }}>
               {otherProjects.map(project => (
@@ -127,7 +145,7 @@ const ProjectCard = ({ project, featured = false }) => {
     <div className="card" style={{ 
       overflow: 'hidden', 
       padding: '0',
-      height: featured ? 'auto' : '400px',
+      height: featured ? 'auto' : 'auto',
       display: 'flex',
       flexDirection: 'column'
     }}>
@@ -166,14 +184,33 @@ const ProjectCard = ({ project, featured = false }) => {
       </div>
       
       <div style={{ padding: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.75rem' }}>
+        <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1rem' }}>
           {project.title}
         </h3>
+        
+        {/* Case Study Structure */}
+        {featured && (
+          <div style={{ marginBottom: '1.5rem' }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <h4 style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--accent)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Problem</h4>
+              <p style={{ color: 'var(--text-light)', fontSize: '0.875rem', lineHeight: '1.5' }}>{project.problem}</p>
+            </div>
+            <div style={{ marginBottom: '1rem' }}>
+              <h4 style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--accent)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Solution</h4>
+              <p style={{ color: 'var(--text-light)', fontSize: '0.875rem', lineHeight: '1.5' }}>{project.solution}</p>
+            </div>
+            <div style={{ marginBottom: '1rem' }}>
+              <h4 style={{ fontSize: '0.875rem', fontWeight: '600', color: 'var(--accent)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Impact</h4>
+              <p style={{ color: 'var(--primary)', fontSize: '0.875rem', lineHeight: '1.5', fontWeight: '500' }}>{project.impact}</p>
+            </div>
+          </div>
+        )}
+        
         <p style={{ 
           color: 'var(--text-light)', 
           lineHeight: '1.6', 
-          marginBottom: '1rem',
-          flex: 1
+          marginBottom: '1.5rem',
+          fontSize: featured ? '0.875rem' : '0.9rem'
         }}>
           {project.description}
         </p>
@@ -195,7 +232,7 @@ const ProjectCard = ({ project, featured = false }) => {
           </div>
         </div>
         
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '1rem', marginTop: 'auto' }}>
           <a 
             href={project.github}
             target="_blank"

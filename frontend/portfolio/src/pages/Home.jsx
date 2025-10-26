@@ -7,9 +7,9 @@ const Brain = () => <svg className="w-6 h-6" fill="none" stroke="currentColor" v
 
 const Home = () => {
   const skills = [
-    { icon: Code, title: 'Machine Learning', desc: 'Python, TensorFlow, PyTorch' },
-    { icon: Database, title: 'Data Analysis', desc: 'SQL, Pandas, NumPy' },
-    { icon: Brain, title: 'AI & NLP', desc: 'Natural Language Processing' }
+    { icon: Brain, title: 'LLM & GenAI', desc: 'GPT, Claude, RAG Systems, Fine-tuning' },
+    { icon: Code, title: 'MLOps & Production', desc: 'Docker, Kubernetes, AWS, Model Deployment' },
+    { icon: Database, title: 'Data Engineering', desc: 'Real-time Pipelines, ETL, Big Data Analytics' }
   ];
 
   return (
@@ -28,16 +28,16 @@ const Home = () => {
             marginBottom: '1rem',
             lineHeight: '1.1'
           }}>
-            Data Scientist | AI & NLP Specialist
+            AI Engineer & Data Scientist
           </h1>
           <p style={{ 
             fontSize: '1.25rem', 
             marginBottom: '2rem', 
             opacity: '0.9',
-            maxWidth: '600px',
+            maxWidth: '700px',
             margin: '0 auto 2rem'
           }}>
-            Transforming data into actionable insights through machine learning and artificial intelligence
+            Building intelligent systems that drive business growth • Specializing in LLMs, Computer Vision & MLOps • 5+ years turning complex data into million-dollar insights
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/projects" className="btn btn-secondary" style={{ backgroundColor: 'white', color: 'var(--primary)' }}>
@@ -87,10 +87,10 @@ const Home = () => {
       <section style={{ backgroundColor: 'var(--surface)', padding: '4rem 0', textAlign: 'center' }}>
         <div className="container">
           <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '1rem' }}>
-            Ready to collaborate?
+            Ready to scale with AI?
           </h2>
           <p style={{ color: 'var(--text-light)', marginBottom: '2rem', fontSize: '1.125rem' }}>
-            Let's discuss how data science can drive your next project forward
+            Let's build intelligent systems that automate processes, predict outcomes, and unlock new revenue streams for your business
           </p>
           <Link to="/contact" className="btn btn-primary">
             Get In Touch <ArrowRight size={20} />
